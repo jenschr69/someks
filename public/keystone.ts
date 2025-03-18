@@ -20,8 +20,15 @@ export default withAuth(
       // we're using sqlite for the fastest startup experience
       //   for more information on what database might be appropriate for you
       //   see https://keystonejs.com/docs/guides/choosing-a-database#title
-      provider: 'sqlite',
-      url: 'file:./keystone.db',
+      // provider: 'sqlite',
+      // url: 'file:./keystone.db',
+      // Switching to MySQL database in stead
+      provider: 'mysql',
+      url: 'mysql://root:mysql@localhost:3306/someks',
+      onConnect: async context => { /* ... */ },
+      // Optional advanced configuration
+      enableLogging: true,
+      idField: { kind: 'uuid' },
     },
     lists,
     session,
